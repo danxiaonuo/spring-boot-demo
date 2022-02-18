@@ -27,7 +27,8 @@ ARG PKG_DEPS="\
       lsof \
       zip \
       unzip \
-      ca-certificates"
+      ca-certificates \
+	  openjdk8-jre-base"
 ENV PKG_DEPS=$PKG_DEPS
 
 # ***** 安装依赖 *****
