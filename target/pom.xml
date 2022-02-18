@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.iflytek.com</groupId>
+	<artifactId>spring-boot-mini</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot-mini</name>
+	<description>Demo project for Spring Boot</description>
+
+	<!--私服地址-->
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>mvn-repo</id>
+			<url>https://artifacts.iflytek.com/artifactory/mvn-repo/</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<!-- 构建版本 -->
+		<maven.compiler.version>1.8</maven.compiler.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<build.plugins.plugin.version>3.7.0</build.plugins.plugin.version>
+		<!-- SpringBoot版本 -->
+		<spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+	</dependencies>
+
+	<!-- 构建模块 -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${build.plugins.plugin.version}</version>
+				<configuration>
+					<source>${maven.compiler.version}</source>
+					<target>${maven.compiler.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>make-zip</id>
+						<!-- 绑定到package生命周期阶段上 -->
+						<phase>package</phase>
+						<goals>
+							<!-- 绑定到package生命周期阶段上 -->
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<!--描述文件路径-->
+								<descriptor>src/assembly/assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
