@@ -22,4 +22,4 @@ MAIN_CLASS="com.iflytek.iptv.Main"
 nohup java $VAR_JAVA_OPTS $SKYWALKING_OPTIONS -cp $VAR_DEPLOY_DIR/conf:$VAR_DEPLOY_DIR/resources:$VAR_DEPLOY_DIR/lib/* $MAIN_CLASS > $VAR_STDOUT_FILE > /dev/null 2>&1 &
 
 VAR_PIDS=`ps aux | grep java | grep "$VAR_DEPLOY_DIR" | grep -v grep | grep -v "start.sh" | awk '{print $1}'`
-echo "PID: $VAR_PIDS"
+tail -F $VAR_STDOUT_FILE
