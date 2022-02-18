@@ -49,6 +49,9 @@ RUN set -eux && \
    sed -i -e 's/mouse=/mouse-=/g' /usr/share/vim/vim*/defaults.vim && \
    /bin/zsh
 
+# ***** 挂载目录 *****
+VOLUME /tmp
+
 # ***** 工作目录 *****
 WORKDIR /usr/spring-boot-demo
 
