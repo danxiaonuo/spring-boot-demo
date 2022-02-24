@@ -2,9 +2,10 @@
 
 source /etc/profile
 
+VAR_TIME=$(date +%Y-%m-%d)
 VAR_DEPLOY_DIR="/usr/spring-boot-demo"
 VAR_LOG_DIR=$VAR_DEPLOY_DIR/logs
-VAR_STDOUT_FILE=$VAR_LOG_DIR/stdout.log
+VAR_STDOUT_FILE=$VAR_LOG_DIR/spring_boot_mini_info.log.$VAR_TIME.log
 cd $VAR_DEPLOY_DIR
 
 VAR_JAVA_OPTS="-Xmx1550m -Xms1550m -XX:MetaspaceSize=128M -XX:MaxMetaspaceSize=128M -Xss256K -XX:+UseConcMarkSweepGC -XX:+UseParNewGC"
